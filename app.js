@@ -31,7 +31,6 @@ function mostrarAmigos (){
 
     if (amigos.length > 0 ){
         amigos.forEach(element => {
-            alert(element);
             var li = document.createElement('li');
             li.appendChild(document.createTextNode(element));
             ulHTML.appendChild(li);       
@@ -40,11 +39,23 @@ function mostrarAmigos (){
 }
 
 function sortearAmigo(){
-    
-        
-
+    var ulHTML = document.getElementById('resultado');
+    ulHTML.innerHTML = '';
+    if (amigos.length > 0){
+        var indexAleatorio = Math.floor(Math.random()*amigos.length); //los indices del array van desde 0 a n-1
+        ulHTML.innerHTML = amigos[indexAleatorio]; // le asigno al elemento HTML el valor del array de la posicion indexAleatorio;
+    }else{
+        ulHTML.innerHTML= 'No hay amigos.';
+        setTimeout();
+    }
 }
-
+setTimeout(function() {
+            // Selecciona el elemento con el id "mensaje"
+            var mensaje = document.getElementById('resultado');
+            // Borra el contenido del elemento
+            mensaje.innerHTML = '';
+        }, 5000);
+//funcion para validar nombre 
 function validarNombre(nombre) {
     const expReg = /^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/; //expresion regular para validar el nombre
 
