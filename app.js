@@ -1,5 +1,4 @@
 let amigos = []; // array de amigos
-let ulAmigosHTML = document.getElementById('listaAmigos')
 
 function agregarAmigo (){
     let amigoHTML = document.getElementById("amigo"); //obtengo el elemento
@@ -41,20 +40,23 @@ function mostrarAmigos (){
 function sortearAmigo(){
     var ulHTML = document.getElementById('resultado');
     ulHTML.innerHTML = '';
+
     if (amigos.length > 0){
         var indexAleatorio = Math.floor(Math.random()*amigos.length); //los indices del array van desde 0 a n-1
-        ulHTML.innerHTML = amigos[indexAleatorio]; // le asigno al elemento HTML el valor del array de la posicion indexAleatorio;
+        ulHTML.innerHTML = `Ganador :  ${amigos[indexAleatorio]}` ; // le asigno al elemento HTML el valor del array de la posicion indexAleatorio;
+        document.getElementById('btn-sorteo').setAttribute('disabled', 'true'); //desabilito el btn sortear amigo
+        document.getElementById('btn-reiniciar').removeAttribute('disabled'); // quito la propiedad disabled del boton reiniciar
     }else{
         ulHTML.innerHTML= 'No hay amigos.';
-        setTimeout();
+        // limpio el campo luego de 5 segundos
+        setTimeout( () => {
+            ulHTML.textContent = '';
+
+        }, 5000);
+        return;
     }
 }
-setTimeout(function() {
-            // Selecciona el elemento con el id "mensaje"
-            var mensaje = document.getElementById('resultado');
-            // Borra el contenido del elemento
-            mensaje.innerHTML = '';
-        }, 5000);
+
 //funcion para validar nombre 
 function validarNombre(nombre) {
     const expReg = /^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/; //expresion regular para validar el nombre
@@ -62,3 +64,10 @@ function validarNombre(nombre) {
     return expReg.test(nombre); //devuelve true - false
 }
 
+function condicionesIniciales(){
+    ulAmigosHTML = document.getElementById('listaAmigos').innerHTML ='';
+    amigos = [];
+    document.getElementById('btn-reiniciar').setAttribute('disabled', 'true'); //desabilito el btn sortear amigo
+    document.getElementById('btn-sorteo').removeAttribute('disabled'); // quito la propiedad disabled del boton reiniciar
+    ulHTML = document.getElementById('resultado').innerHTML = '';
+}

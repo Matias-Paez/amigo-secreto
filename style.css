@@ -88,8 +88,11 @@ body {
 }
 
 .button-container {
-    width: 300px;
+    display: flex;
     justify-content: center;
+    gap: 10px;
+   /* width: 300px;
+    justify-content: center;*/
 }
 
 /* Estilos de entrada de texto */
@@ -147,14 +150,24 @@ ul {
     display: flex;
     align-items: center;
     width: 100%;
+    gap: 5px;
     padding: 10px 40px;
     color: var(--color-white);
     background-color: var(--color-button);
     font-size: 16px;
 }
 
-.button-draw img {
-    margin-right: 40px;
+/* Cuando el botón está deshabilitado */
+.button-draw:disabled {
+    background-color: #a0a0a0; /* Cambia a gris */
+    color: #ffffff; /* Texto en blanco */
+    cursor: not-allowed; /* Cambia el cursor */
+    opacity: 0.6; /* Hace el botón más opaco */
+}
+
+.button-draw .icon {
+    width: 24px;
+    height: 24px;
 }
 
 .button-draw:hover {
