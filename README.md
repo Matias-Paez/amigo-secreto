@@ -17,4 +17,4 @@ Esta es una aplicación web simple que permite ingresar una lista de nombres y r
 ## Instalación y Uso
 1. Clona este repositorio:
    ```sh
-   git clone https://github.com/tu-usuario/sorteo-nombres.git
+   git clone https://github.com/Matias-Paez/amigo-secreto.git
